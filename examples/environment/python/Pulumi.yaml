@@ -1,0 +1,3 @@
+name: cloud-enviroment-py
+runtime: python
+description: A minimal Python Pulumi program to create a Confluent Cloud Environment

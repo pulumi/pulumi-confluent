@@ -1,0 +1,4 @@
+name: cloud-enviroment-csharp
+runtime: dotnet
+description: A minimal C# Pulumi program to create a Confluent Cloud Environment
+
