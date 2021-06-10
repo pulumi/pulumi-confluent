@@ -140,7 +140,7 @@
                 "type": "object"
             }
         },
-        "confluent:index/environment:Environment": {
+        "confluent:index/confluentEnvironment:ConfluentEnvironment": {
             "properties": {
                 "name": {
                     "type": "string",
@@ -157,7 +157,7 @@
                 }
             },
             "stateInputs": {
-                "description": "Input properties used for looking up and filtering Environment resources.\n",
+                "description": "Input properties used for looking up and filtering ConfluentEnvironment resources.\n",
                 "properties": {
                     "name": {
                         "type": "string",

@@ -9,8 +9,8 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Confluent
 {
-    [ConfluentResourceType("confluent:index/environment:Environment")]
-    public partial class Environment : Pulumi.CustomResource
+    [ConfluentResourceType("confluent:index/confluentEnvironment:ConfluentEnvironment")]
+    public partial class ConfluentEnvironment : Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the environment
@@ -20,19 +20,19 @@ namespace Pulumi.Confluent
 
 
         /// <summary>
-        /// Create a Environment resource with the given unique name, arguments, and options.
+        /// Create a ConfluentEnvironment resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Environment(string name, EnvironmentArgs? args = null, CustomResourceOptions? options = null)
-            : base("confluent:index/environment:Environment", name, args ?? new EnvironmentArgs(), MakeResourceOptions(options, ""))
+        public ConfluentEnvironment(string name, ConfluentEnvironmentArgs? args = null, CustomResourceOptions? options = null)
+            : base("confluent:index/confluentEnvironment:ConfluentEnvironment", name, args ?? new ConfluentEnvironmentArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private Environment(string name, Input<string> id, EnvironmentState? state = null, CustomResourceOptions? options = null)
-            : base("confluent:index/environment:Environment", name, state, MakeResourceOptions(options, id))
+        private ConfluentEnvironment(string name, Input<string> id, ConfluentEnvironmentState? state = null, CustomResourceOptions? options = null)
+            : base("confluent:index/confluentEnvironment:ConfluentEnvironment", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -48,7 +48,7 @@ namespace Pulumi.Confluent
             return merged;
         }
         /// <summary>
-        /// Get an existing Environment resource's state with the given name, ID, and optional extra
+        /// Get an existing ConfluentEnvironment resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -56,13 +56,13 @@ namespace Pulumi.Confluent
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static Environment Get(string name, Input<string> id, EnvironmentState? state = null, CustomResourceOptions? options = null)
+        public static ConfluentEnvironment Get(string name, Input<string> id, ConfluentEnvironmentState? state = null, CustomResourceOptions? options = null)
         {
-            return new Environment(name, id, state, options);
+            return new ConfluentEnvironment(name, id, state, options);
         }
     }
 
-    public sealed class EnvironmentArgs : Pulumi.ResourceArgs
+    public sealed class ConfluentEnvironmentArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the environment
@@ -70,12 +70,12 @@ namespace Pulumi.Confluent
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        public EnvironmentArgs()
+        public ConfluentEnvironmentArgs()
         {
         }
     }
 
-    public sealed class EnvironmentState : Pulumi.ResourceArgs
+    public sealed class ConfluentEnvironmentState : Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the environment
@@ -83,7 +83,7 @@ namespace Pulumi.Confluent
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        public EnvironmentState()
+        public ConfluentEnvironmentState()
         {
         }
     }

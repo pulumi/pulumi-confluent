@@ -1,48 +1,14 @@
-# Terraform Bridge Provider Boilerplate
+[![Actions Status](https://github.com/pulumi/pulumi-confluent/workflows/master/badge.svg)](https://github.com/pulumi/pulumi-confluent/actions)
+[![Slack](http://www.pulumi.com/images/docs/badges/slack.svg)](https://slack.pulumi.com)
+[![NPM version](https://badge.fury.io/js/%40pulumi%2Fconfluent.svg)](https://www.npmjs.com/package/@pulumi/confluent)
+[![Python version](https://badge.fury.io/py/pulumi-confluent.svg)](https://pypi.org/project/pulumi-confluent)
+[![NuGet version](https://badge.fury.io/nu/pulumi.confluent.svg)](https://badge.fury.io/nu/pulumi.confluent)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-confluent/sdk/go)](https://pkg.go.dev/github.com/pulumi/pulumi-confluent/sdk/go)
+[![License](https://img.shields.io/npm/l/%40pulumi%2Fpulumi.svg)](https://github.com/pulumi/pulumi-confluent/blob/master/LICENSE)
 
-This repository contains boilerplate code for building a new Pulumi provider which wraps an existing
-Terraform provider, if the existing provider uses _Go Modules_.
+# Confluent Cloud Resource Provider
 
-Modify this README to describe:
-
-- The type of resources the provider manages
-- Add a build status image from Travis at the top of the README
-- Update package names in the information below
-- Add any important documentation of concepts (e.g. the "serverless" components in the AWS provider).
-
-## Creating a Pulumi Terraform Bridge Provider
-
-First, clone this repo with the name of the desired provider in place of `confluent`:
-
-```
-git clone https://github.com/pulumi/pulumi-tf-provider-boilerplate pulumi-confluent
-```
-
-Second, replace references to `confluent` with the name of your provider:
-
-```
-make prepare NAME=foo REPOSITORY=github.com/pulumi/pulumi-foo
-```
-
-Next, list the configuration points for the provider in the area of the README.
-
-
-> Note: If the name of the desired Pulumi provider differs from the name of the Terraform provider, you will need to carefully distinguish between the references - see https://github.com/pulumi/pulumi-azure for an example.
-
-### Add dependencies
-
-In order to properly build the sdks, the following tools are expected:
-- `pulumictl` (See the project's README for installation instructions: https://github.com/pulumi/pulumictl)
-
-In the root of the repository, run:
-
-- `(cd provider && go get github.com/terraform-providers/terraform-provider-foo)`  (where `foo` is the name of the provider - note the parenthesis to run this in a subshell)
-- `(cd provider && go mod download)`
-
-### Build the provider:
-
-- Edit `provider/resources.go` to map each resource, and specify provider information
-- `make build_sdks`
+The Confluent Cloud Resource Provider lets you manage Confluent Cloud resources.
 
 ## Installing
 
@@ -52,17 +18,17 @@ This package is available in many languages in the standard packaging formats.
 
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
-    $ npm install @pulumi/xyx
+    $ npm install @pulumi/confluent
 
 or `yarn`:
 
-    $ yarn add @pulumi/xyx
+    $ yarn add @pulumi/confluent
 
 ### Python
 
 To use from Python, install using `pip`:
 
-    $ pip install pulumi_xyx
+    $ pip install pulumi_confluent
 
 ### Go
 
@@ -70,16 +36,22 @@ To use from Go, use `go get` to grab the latest version of the library
 
     $ go get github.com/pulumi/pulumi-confluent/sdk/go/...
 
+### .NET
+
+To use from .NET, install using `dotnet add package`:
+
+    $ dotnet add package Pulumi.Confluent
+
 ## Configuration
 
-The following configuration points are available for the `confluent` provider:
+The following configuration points are available:
 
-- `confluent:apiKey` (environment: `XYZ_API_KEY`) - the API key for `confluent`
-- `confluent:region` (environment: `XYZ_REGION`) - the region in which to deploy resources
+- `confluent:username` - (Required) Confluent cloud username. It must be provided, but it can also be sourced
+  from the `CONFLUENT_CLOUD_USERNAME` environment variable.
+- `confluent:password` - (Required) Confluent cloud password. It must be provided, but it can also be
+  sourced from the `CONFLUENT_CLOUD_PASSWORD` variable.
 
 ## Reference
 
-For detailed reference documentation, please visit [the API docs][1].
-
-
-[1]: https://www.pulumi.com/docs/reference/pkg/x/
+For further information, please visit [the Confluent provider docs](https://www.pulumi.com/docs/intro/cloud-providers/confluent)
+or for detailed reference documentation, please visit [the API docs](https://www.pulumi.com/docs/reference/pkg/confluent).

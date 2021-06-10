@@ -6,7 +6,7 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .api_key import *
-from .environment import *
+from .confluent_environment import *
 from .kafka_cluster import *
 from .provider import *
 from .schema_registry import *
@@ -31,10 +31,10 @@ _utilities.register(
  },
  {
   "pkg": "confluent",
-  "mod": "index/environment",
+  "mod": "index/confluentEnvironment",
   "fqn": "pulumi_confluent",
   "classes": {
-   "confluent:index/environment:Environment": "Environment"
+   "confluent:index/confluentEnvironment:ConfluentEnvironment": "ConfluentEnvironment"
   }
  },
  {

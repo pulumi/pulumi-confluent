@@ -4,9 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-export class Environment extends pulumi.CustomResource {
+export class ConfluentEnvironment extends pulumi.CustomResource {
     /**
-     * Get an existing Environment resource's state with the given name, ID, and optional extra
+     * Get an existing ConfluentEnvironment resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -14,22 +14,22 @@ export class Environment extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: EnvironmentState, opts?: pulumi.CustomResourceOptions): Environment {
-        return new Environment(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ConfluentEnvironmentState, opts?: pulumi.CustomResourceOptions): ConfluentEnvironment {
+        return new ConfluentEnvironment(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'confluent:index/environment:Environment';
+    public static readonly __pulumiType = 'confluent:index/confluentEnvironment:ConfluentEnvironment';
 
     /**
-     * Returns true if the given object is an instance of Environment.  This is designed to work even
+     * Returns true if the given object is an instance of ConfluentEnvironment.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is Environment {
+    public static isInstance(obj: any): obj is ConfluentEnvironment {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === Environment.__pulumiType;
+        return obj['__pulumiType'] === ConfluentEnvironment.__pulumiType;
     }
 
     /**
@@ -38,34 +38,34 @@ export class Environment extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
 
     /**
-     * Create a Environment resource with the given unique name, arguments, and options.
+     * Create a ConfluentEnvironment resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: EnvironmentArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: EnvironmentArgs | EnvironmentState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: ConfluentEnvironmentArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: ConfluentEnvironmentArgs | ConfluentEnvironmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as EnvironmentState | undefined;
+            const state = argsOrState as ConfluentEnvironmentState | undefined;
             inputs["name"] = state ? state.name : undefined;
         } else {
-            const args = argsOrState as EnvironmentArgs | undefined;
+            const args = argsOrState as ConfluentEnvironmentArgs | undefined;
             inputs["name"] = args ? args.name : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Environment.__pulumiType, name, inputs, opts);
+        super(ConfluentEnvironment.__pulumiType, name, inputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering Environment resources.
+ * Input properties used for looking up and filtering ConfluentEnvironment resources.
  */
-export interface EnvironmentState {
+export interface ConfluentEnvironmentState {
     /**
      * The name of the environment
      */
@@ -73,9 +73,9 @@ export interface EnvironmentState {
 }
 
 /**
- * The set of arguments for constructing a Environment resource.
+ * The set of arguments for constructing a ConfluentEnvironment resource.
  */
-export interface EnvironmentArgs {
+export interface ConfluentEnvironmentArgs {
     /**
      * The name of the environment
      */

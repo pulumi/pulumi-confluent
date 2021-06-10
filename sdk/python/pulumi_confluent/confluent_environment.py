@@ -8,14 +8,14 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['EnvironmentArgs', 'Environment']
+__all__ = ['ConfluentEnvironmentArgs', 'ConfluentEnvironment']
 
 @pulumi.input_type
-class EnvironmentArgs:
+class ConfluentEnvironmentArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        The set of arguments for constructing a Environment resource.
+        The set of arguments for constructing a ConfluentEnvironment resource.
         :param pulumi.Input[str] name: The name of the environment
         """
         if name is not None:
@@ -35,11 +35,11 @@ class EnvironmentArgs:
 
 
 @pulumi.input_type
-class _EnvironmentState:
+class _ConfluentEnvironmentState:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering Environment resources.
+        Input properties used for looking up and filtering ConfluentEnvironment resources.
         :param pulumi.Input[str] name: The name of the environment
         """
         if name is not None:
@@ -58,7 +58,7 @@ class _EnvironmentState:
         pulumi.set(self, "name", value)
 
 
-class Environment(pulumi.CustomResource):
+class ConfluentEnvironment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -66,7 +66,7 @@ class Environment(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Environment resource with the given unique name, props, and options.
+        Create a ConfluentEnvironment resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the environment
@@ -75,17 +75,17 @@ class Environment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[EnvironmentArgs] = None,
+                 args: Optional[ConfluentEnvironmentArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Environment resource with the given unique name, props, and options.
+        Create a ConfluentEnvironment resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
-        :param EnvironmentArgs args: The arguments to use to populate this resource's properties.
+        :param ConfluentEnvironmentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(EnvironmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ConfluentEnvironmentArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -105,11 +105,11 @@ class Environment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = EnvironmentArgs.__new__(EnvironmentArgs)
+            __props__ = ConfluentEnvironmentArgs.__new__(ConfluentEnvironmentArgs)
 
             __props__.__dict__["name"] = name
-        super(Environment, __self__).__init__(
-            'confluent:index/environment:Environment',
+        super(ConfluentEnvironment, __self__).__init__(
+            'confluent:index/confluentEnvironment:ConfluentEnvironment',
             resource_name,
             __props__,
             opts)
@@ -118,9 +118,9 @@ class Environment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            name: Optional[pulumi.Input[str]] = None) -> 'Environment':
+            name: Optional[pulumi.Input[str]] = None) -> 'ConfluentEnvironment':
         """
-        Get an existing Environment resource's state with the given name, id, and optional extra
+        Get an existing ConfluentEnvironment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -130,10 +130,10 @@ class Environment(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _EnvironmentState.__new__(_EnvironmentState)
+        __props__ = _ConfluentEnvironmentState.__new__(_ConfluentEnvironmentState)
 
         __props__.__dict__["name"] = name
-        return Environment(resource_name, opts=opts, __props__=__props__)
+        return ConfluentEnvironment(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

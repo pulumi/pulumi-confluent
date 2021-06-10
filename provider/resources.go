@@ -62,7 +62,6 @@ func makeResource(mod string, res string) tokens.Type {
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
-	// Instantiate the Terraform provider
 	p := shimv2.NewProvider(ccloud.Provider())
 
 	// Create a Pulumi provider mapping
@@ -75,31 +74,15 @@ func Provider() tfbridge.ProviderInfo {
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/pulumi/pulumi-confluent",
-		Config:      map[string]*tfbridge.SchemaInfo{
-			// Add any required configuration here, or remove the example below if
-			// no additional points are required.
-			// "region": {
-			// 	Type: makeType("region", "Region"),
-			// 	Default: &tfbridge.DefaultInfo{
-			// 		EnvVars: []string{"AWS_REGION", "AWS_DEFAULT_REGION"},
-			// 	},
-			// },
-		},
+		Config:      map[string]*tfbridge.SchemaInfo{},
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"confluentcloud_api_key":              {Tok: makeResource(mainMod, "ApiKey")},
-			"confluentcloud_environment":          {Tok: makeResource(mainMod, "Environment")},
-			"confluentcloud_kafka_cluster":        {Tok: makeResource(mainMod, "KafkaCluster")},
-			"confluentcloud_kafka_cluster_test":   {Tok: makeResource(mainMod, "KafkaClusterTest")},
-			"confluentcloud_schema_registry":      {Tok: makeResource(mainMod, "SchemaRegistry")},
-			"confluentcloud_schema_registry_test": {Tok: makeResource(mainMod, "SchemaRegistryTest")},
-			"confluentcloud_service_account":      {Tok: makeResource(mainMod, "ServiceAccount")},
-			"confluentcloud_service_account_test": {Tok: makeResource(mainMod, "ServiceAccountTest")},
+			"confluentcloud_api_key":         {Tok: makeResource(mainMod, "ApiKey")},
+			"confluentcloud_environment":     {Tok: makeResource(mainMod, "ConfluentEnvironment")},
+			"confluentcloud_kafka_cluster":   {Tok: makeResource(mainMod, "KafkaCluster")},
+			"confluentcloud_schema_registry": {Tok: makeResource(mainMod, "SchemaRegistry")},
+			"confluentcloud_service_account": {Tok: makeResource(mainMod, "ServiceAccount")},
 		},
-		DataSources: map[string]*tfbridge.DataSourceInfo{
-			// Map each resource in the Terraform provider to a Pulumi function. An example
-			// is below.
-			// "aws_ami": {Tok: makeDataSource(mainMod, "getAmi")},
-		},
+		DataSources: map[string]*tfbridge.DataSourceInfo{},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
 			Dependencies: map[string]string{
@@ -109,13 +92,8 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
 				"@types/mime": "^2.0.0",
 			},
-			// See the documentation for tfbridge.OverlayInfo for how to lay out this
-			// section, or refer to the AWS provider. Delete this section if there are
-			// no overlay files.
-			//Overlay: &tfbridge.OverlayInfo{},
 		},
 		Python: &tfbridge.PythonInfo{
-			// List any Python dependencies and their version ranges
 			Requires: map[string]string{
 				"pulumi": ">=3.0.0,<4.0.0",
 			},
