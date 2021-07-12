@@ -7,6 +7,7 @@ import * as utilities from "./utilities";
 // Export members:
 export * from "./apiKey";
 export * from "./confluentEnvironment";
+export * from "./connector";
 export * from "./kafkaCluster";
 export * from "./provider";
 export * from "./schemaRegistry";
@@ -22,6 +23,7 @@ export {
 // Import resources to register:
 import { ApiKey } from "./apiKey";
 import { ConfluentEnvironment } from "./confluentEnvironment";
+import { Connector } from "./connector";
 import { KafkaCluster } from "./kafkaCluster";
 import { SchemaRegistry } from "./schemaRegistry";
 import { ServiceAccount } from "./serviceAccount";
@@ -34,6 +36,8 @@ const _module = {
                 return new ApiKey(name, <any>undefined, { urn })
             case "confluent:index/confluentEnvironment:ConfluentEnvironment":
                 return new ConfluentEnvironment(name, <any>undefined, { urn })
+            case "confluent:index/connector:Connector":
+                return new Connector(name, <any>undefined, { urn })
             case "confluent:index/kafkaCluster:KafkaCluster":
                 return new KafkaCluster(name, <any>undefined, { urn })
             case "confluent:index/schemaRegistry:SchemaRegistry":
@@ -47,6 +51,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("confluent", "index/apiKey", _module)
 pulumi.runtime.registerResourceModule("confluent", "index/confluentEnvironment", _module)
+pulumi.runtime.registerResourceModule("confluent", "index/connector", _module)
 pulumi.runtime.registerResourceModule("confluent", "index/kafkaCluster", _module)
 pulumi.runtime.registerResourceModule("confluent", "index/schemaRegistry", _module)
 pulumi.runtime.registerResourceModule("confluent", "index/serviceAccount", _module)

@@ -16,7 +16,8 @@ type ServiceAccount struct {
 
 	// Service Account Description
 	Description pulumi.StringOutput `pulumi:"description"`
-	Name        pulumi.StringOutput `pulumi:"name"`
+	// Service Account Name
+	Name pulumi.StringOutput `pulumi:"name"`
 }
 
 // NewServiceAccount registers a new resource with the given unique name, arguments, and options.
@@ -53,13 +54,15 @@ func GetServiceAccount(ctx *pulumi.Context,
 type serviceAccountState struct {
 	// Service Account Description
 	Description *string `pulumi:"description"`
-	Name        *string `pulumi:"name"`
+	// Service Account Name
+	Name *string `pulumi:"name"`
 }
 
 type ServiceAccountState struct {
 	// Service Account Description
 	Description pulumi.StringPtrInput
-	Name        pulumi.StringPtrInput
+	// Service Account Name
+	Name pulumi.StringPtrInput
 }
 
 func (ServiceAccountState) ElementType() reflect.Type {
@@ -68,15 +71,17 @@ func (ServiceAccountState) ElementType() reflect.Type {
 
 type serviceAccountArgs struct {
 	// Service Account Description
-	Description string  `pulumi:"description"`
-	Name        *string `pulumi:"name"`
+	Description string `pulumi:"description"`
+	// Service Account Name
+	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a ServiceAccount resource.
 type ServiceAccountArgs struct {
 	// Service Account Description
 	Description pulumi.StringInput
-	Name        pulumi.StringPtrInput
+	// Service Account Name
+	Name pulumi.StringPtrInput
 }
 
 func (ServiceAccountArgs) ElementType() reflect.Type {

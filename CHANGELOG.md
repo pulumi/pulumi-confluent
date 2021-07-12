@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v0.0.11 of the Confluent Cloud Terraform Provider
 
 ---
 
