@@ -167,6 +167,86 @@
                 "type": "object"
             }
         },
+        "confluent:index/connector:Connector": {
+            "properties": {
+                "clusterId": {
+                    "type": "string",
+                    "description": "ID of containing cluster, e.g. lkc-abc123\n"
+                },
+                "config": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Type-specific Configuration of cluster. String keys and values\n"
+                },
+                "environmentId": {
+                    "type": "string",
+                    "description": "ID of containing environment, e.g. env-abc123\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the connector\n"
+                }
+            },
+            "required": [
+                "clusterId",
+                "config",
+                "environmentId",
+                "name"
+            ],
+            "inputProperties": {
+                "clusterId": {
+                    "type": "string",
+                    "description": "ID of containing cluster, e.g. lkc-abc123\n"
+                },
+                "config": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Type-specific Configuration of cluster. String keys and values\n"
+                },
+                "environmentId": {
+                    "type": "string",
+                    "description": "ID of containing environment, e.g. env-abc123\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the connector\n"
+                }
+            },
+            "requiredInputs": [
+                "clusterId",
+                "config",
+                "environmentId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Connector resources.\n",
+                "properties": {
+                    "clusterId": {
+                        "type": "string",
+                        "description": "ID of containing cluster, e.g. lkc-abc123\n"
+                    },
+                    "config": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "Type-specific Configuration of cluster. String keys and values\n"
+                    },
+                    "environmentId": {
+                        "type": "string",
+                        "description": "ID of containing environment, e.g. env-abc123\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the connector\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "confluent:index/kafkaCluster:KafkaCluster": {
             "properties": {
                 "availability": {
@@ -400,7 +480,8 @@
                     "description": "Service Account Description\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Service Account Name\n"
                 }
             },
             "required": [
@@ -413,7 +494,8 @@
                     "description": "Service Account Description\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Service Account Name\n"
                 }
             },
             "requiredInputs": [
@@ -427,7 +509,8 @@
                         "description": "Service Account Description\n"
                     },
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Service Account Name\n"
                     }
                 },
                 "type": "object"
@@ -439,8 +522,7 @@
             "compatibility": "tfbridge20",
             "namespaces": null,
             "packageReferences": {
-                "Pulumi": "3.*",
-                "System.Collections.Immutable": "1.6.0"
+                "Pulumi": "3.*"
             }
         },
         "go": {

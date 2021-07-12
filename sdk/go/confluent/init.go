@@ -24,6 +24,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ApiKey{}
 	case "confluent:index/confluentEnvironment:ConfluentEnvironment":
 		r = &ConfluentEnvironment{}
+	case "confluent:index/connector:Connector":
+		r = &Connector{}
 	case "confluent:index/kafkaCluster:KafkaCluster":
 		r = &KafkaCluster{}
 	case "confluent:index/schemaRegistry:SchemaRegistry":
@@ -69,6 +71,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"confluent",
 		"index/confluentEnvironment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"confluent",
+		"index/connector",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

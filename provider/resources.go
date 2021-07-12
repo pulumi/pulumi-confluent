@@ -73,6 +73,7 @@ func Provider() tfbridge.ProviderInfo {
 			"confluentcloud_kafka_cluster":   {Tok: makeResource(mainMod, "KafkaCluster")},
 			"confluentcloud_schema_registry": {Tok: makeResource(mainMod, "SchemaRegistry")},
 			"confluentcloud_service_account": {Tok: makeResource(mainMod, "ServiceAccount")},
+			"confluentcloud_connector":       {Tok: makeResource(mainMod, "Connector")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{},
 		JavaScript: &tfbridge.JavaScriptInfo{
@@ -101,8 +102,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "3.*",
-				"System.Collections.Immutable": "1.6.0",
+				"Pulumi": "3.*",
 			},
 		},
 	}

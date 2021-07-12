@@ -17,6 +17,7 @@
         "config/index.ts",
         "config/vars.ts",
         "confluentEnvironment.ts",
+        "connector.ts",
         "index.ts",
         "kafkaCluster.ts",
         "provider.ts",

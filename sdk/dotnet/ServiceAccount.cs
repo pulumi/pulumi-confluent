@@ -18,6 +18,9 @@ namespace Pulumi.Confluent
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Service Account Name
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -73,6 +76,9 @@ namespace Pulumi.Confluent
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
+        /// <summary>
+        /// Service Account Name
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -89,6 +95,9 @@ namespace Pulumi.Confluent
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Service Account Name
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

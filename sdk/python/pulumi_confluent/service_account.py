@@ -18,6 +18,7 @@ class ServiceAccountArgs:
         """
         The set of arguments for constructing a ServiceAccount resource.
         :param pulumi.Input[str] description: Service Account Description
+        :param pulumi.Input[str] name: Service Account Name
         """
         pulumi.set(__self__, "description", description)
         if name is not None:
@@ -38,6 +39,9 @@ class ServiceAccountArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service Account Name
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -53,6 +57,7 @@ class _ServiceAccountState:
         """
         Input properties used for looking up and filtering ServiceAccount resources.
         :param pulumi.Input[str] description: Service Account Description
+        :param pulumi.Input[str] name: Service Account Name
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -74,6 +79,9 @@ class _ServiceAccountState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service Account Name
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -94,6 +102,7 @@ class ServiceAccount(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Service Account Description
+        :param pulumi.Input[str] name: Service Account Name
         """
         ...
     @overload
@@ -156,6 +165,7 @@ class ServiceAccount(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Service Account Description
+        :param pulumi.Input[str] name: Service Account Name
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -176,5 +186,8 @@ class ServiceAccount(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        Service Account Name
+        """
         return pulumi.get(self, "name")
 

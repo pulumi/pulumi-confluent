@@ -36,6 +36,9 @@ export class ServiceAccount extends pulumi.CustomResource {
      * Service Account Description
      */
     public readonly description!: pulumi.Output<string>;
+    /**
+     * Service Account Name
+     */
     public readonly name!: pulumi.Output<string>;
 
     /**
@@ -76,6 +79,9 @@ export interface ServiceAccountState {
      * Service Account Description
      */
     description?: pulumi.Input<string>;
+    /**
+     * Service Account Name
+     */
     name?: pulumi.Input<string>;
 }
 
@@ -87,5 +93,8 @@ export interface ServiceAccountArgs {
      * Service Account Description
      */
     description: pulumi.Input<string>;
+    /**
+     * Service Account Name
+     */
     name?: pulumi.Input<string>;
 }
