@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v0.0.12 of the Confluent Cloud Terraform Provider
+_(none)_
 
 ---
+
+## 0.1.2 (2021-08-05)
+* Upgrade to v0.0.12 of the Confluent Cloud Terraform Provider
 
 ## 0.1.1 (2021-07-12)
 * Upgrade to v0.0.11 of the Confluent Cloud Terraform Provider
