@@ -176,7 +176,7 @@ type ConnectorArrayInput interface {
 type ConnectorArray []ConnectorInput
 
 func (ConnectorArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Connector)(nil))
+	return reflect.TypeOf((*[]*Connector)(nil)).Elem()
 }
 
 func (i ConnectorArray) ToConnectorArrayOutput() ConnectorArrayOutput {
@@ -201,7 +201,7 @@ type ConnectorMapInput interface {
 type ConnectorMap map[string]ConnectorInput
 
 func (ConnectorMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Connector)(nil))
+	return reflect.TypeOf((*map[string]*Connector)(nil)).Elem()
 }
 
 func (i ConnectorMap) ToConnectorMapOutput() ConnectorMapOutput {
@@ -212,9 +212,7 @@ func (i ConnectorMap) ToConnectorMapOutputWithContext(ctx context.Context) Conne
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorMapOutput)
 }
 
-type ConnectorOutput struct {
-	*pulumi.OutputState
-}
+type ConnectorOutput struct{ *pulumi.OutputState }
 
 func (ConnectorOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Connector)(nil))
@@ -233,14 +231,12 @@ func (o ConnectorOutput) ToConnectorPtrOutput() ConnectorPtrOutput {
 }
 
 func (o ConnectorOutput) ToConnectorPtrOutputWithContext(ctx context.Context) ConnectorPtrOutput {
-	return o.ApplyT(func(v Connector) *Connector {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Connector) *Connector {
 		return &v
 	}).(ConnectorPtrOutput)
 }
 
-type ConnectorPtrOutput struct {
-	*pulumi.OutputState
-}
+type ConnectorPtrOutput struct{ *pulumi.OutputState }
 
 func (ConnectorPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Connector)(nil))
@@ -252,6 +248,16 @@ func (o ConnectorPtrOutput) ToConnectorPtrOutput() ConnectorPtrOutput {
 
 func (o ConnectorPtrOutput) ToConnectorPtrOutputWithContext(ctx context.Context) ConnectorPtrOutput {
 	return o
+}
+
+func (o ConnectorPtrOutput) Elem() ConnectorOutput {
+	return o.ApplyT(func(v *Connector) Connector {
+		if v != nil {
+			return *v
+		}
+		var ret Connector
+		return ret
+	}).(ConnectorOutput)
 }
 
 type ConnectorArrayOutput struct{ *pulumi.OutputState }
@@ -295,6 +301,10 @@ func (o ConnectorMapOutput) MapIndex(k pulumi.StringInput) ConnectorOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorInput)(nil)).Elem(), &Connector{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorPtrInput)(nil)).Elem(), &Connector{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorArrayInput)(nil)).Elem(), ConnectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorMapInput)(nil)).Elem(), ConnectorMap{})
 	pulumi.RegisterOutputType(ConnectorOutput{})
 	pulumi.RegisterOutputType(ConnectorPtrOutput{})
 	pulumi.RegisterOutputType(ConnectorArrayOutput{})
