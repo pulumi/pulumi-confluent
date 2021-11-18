@@ -15,7 +15,8 @@ from .service_account import *
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
-    import pulumi_confluent.config as config
+    import pulumi_confluent.config as __config
+    config = __config
 else:
     config = _utilities.lazy_import('pulumi_confluent.config')
 

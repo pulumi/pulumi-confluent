@@ -10,6 +10,6 @@ replace github.com/cgroschupp/go-client-confluent-cloud => github.com/Mongey/go-
 
 require (
 	github.com/Mongey/terraform-provider-confluentcloud v0.0.12
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.2.1
-	github.com/pulumi/pulumi/sdk/v3 v3.4.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.11.0
+	github.com/pulumi/pulumi/sdk/v3 v3.17.0
 )

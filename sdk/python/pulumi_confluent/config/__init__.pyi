@@ -8,17 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-import types
+password: Optional[str]
 
-__config__ = pulumi.Config('confluent')
-
-
-class _ExportableConfig(types.ModuleType):
-    @property
-    def password(self) -> Optional[str]:
-        return __config__.get('password')
-
-    @property
-    def username(self) -> Optional[str]:
-        return __config__.get('username')
+username: Optional[str]
 
