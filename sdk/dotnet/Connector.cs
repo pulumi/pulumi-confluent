@@ -19,10 +19,16 @@ namespace Pulumi.Confluent
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Type-specific Configuration of cluster. String keys and values
+        /// Type-specific Configuration of connector. String keys and values
         /// </summary>
         [Output("config")]
         public Output<ImmutableDictionary<string, object>> Config { get; private set; } = null!;
+
+        /// <summary>
+        /// Sensitive part of connector configuration. String keys and values
+        /// </summary>
+        [Output("configSensitive")]
+        public Output<ImmutableDictionary<string, object>?> ConfigSensitive { get; private set; } = null!;
 
         /// <summary>
         /// ID of containing environment, e.g. env-abc123
@@ -92,12 +98,24 @@ namespace Pulumi.Confluent
         private InputMap<object>? _config;
 
         /// <summary>
-        /// Type-specific Configuration of cluster. String keys and values
+        /// Type-specific Configuration of connector. String keys and values
         /// </summary>
         public InputMap<object> Config
         {
             get => _config ?? (_config = new InputMap<object>());
             set => _config = value;
+        }
+
+        [Input("configSensitive")]
+        private InputMap<object>? _configSensitive;
+
+        /// <summary>
+        /// Sensitive part of connector configuration. String keys and values
+        /// </summary>
+        public InputMap<object> ConfigSensitive
+        {
+            get => _configSensitive ?? (_configSensitive = new InputMap<object>());
+            set => _configSensitive = value;
         }
 
         /// <summary>
@@ -129,12 +147,24 @@ namespace Pulumi.Confluent
         private InputMap<object>? _config;
 
         /// <summary>
-        /// Type-specific Configuration of cluster. String keys and values
+        /// Type-specific Configuration of connector. String keys and values
         /// </summary>
         public InputMap<object> Config
         {
             get => _config ?? (_config = new InputMap<object>());
             set => _config = value;
+        }
+
+        [Input("configSensitive")]
+        private InputMap<object>? _configSensitive;
+
+        /// <summary>
+        /// Sensitive part of connector configuration. String keys and values
+        /// </summary>
+        public InputMap<object> ConfigSensitive
+        {
+            get => _configSensitive ?? (_configSensitive = new InputMap<object>());
+            set => _configSensitive = value;
         }
 
         /// <summary>

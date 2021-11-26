@@ -8,6 +8,8 @@ import typing
 from .api_key import *
 from .confluent_environment import *
 from .connector import *
+from .get_environment import *
+from .get_service_account import *
 from .kafka_cluster import *
 from .provider import *
 from .schema_registry import *

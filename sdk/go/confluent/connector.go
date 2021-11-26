@@ -16,8 +16,10 @@ type Connector struct {
 
 	// ID of containing cluster, e.g. lkc-abc123
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// Type-specific Configuration of cluster. String keys and values
+	// Type-specific Configuration of connector. String keys and values
 	Config pulumi.MapOutput `pulumi:"config"`
+	// Sensitive part of connector configuration. String keys and values
+	ConfigSensitive pulumi.MapOutput `pulumi:"configSensitive"`
 	// ID of containing environment, e.g. env-abc123
 	EnvironmentId pulumi.StringOutput `pulumi:"environmentId"`
 	// The name of the connector
@@ -64,8 +66,10 @@ func GetConnector(ctx *pulumi.Context,
 type connectorState struct {
 	// ID of containing cluster, e.g. lkc-abc123
 	ClusterId *string `pulumi:"clusterId"`
-	// Type-specific Configuration of cluster. String keys and values
+	// Type-specific Configuration of connector. String keys and values
 	Config map[string]interface{} `pulumi:"config"`
+	// Sensitive part of connector configuration. String keys and values
+	ConfigSensitive map[string]interface{} `pulumi:"configSensitive"`
 	// ID of containing environment, e.g. env-abc123
 	EnvironmentId *string `pulumi:"environmentId"`
 	// The name of the connector
@@ -75,8 +79,10 @@ type connectorState struct {
 type ConnectorState struct {
 	// ID of containing cluster, e.g. lkc-abc123
 	ClusterId pulumi.StringPtrInput
-	// Type-specific Configuration of cluster. String keys and values
+	// Type-specific Configuration of connector. String keys and values
 	Config pulumi.MapInput
+	// Sensitive part of connector configuration. String keys and values
+	ConfigSensitive pulumi.MapInput
 	// ID of containing environment, e.g. env-abc123
 	EnvironmentId pulumi.StringPtrInput
 	// The name of the connector
@@ -90,8 +96,10 @@ func (ConnectorState) ElementType() reflect.Type {
 type connectorArgs struct {
 	// ID of containing cluster, e.g. lkc-abc123
 	ClusterId string `pulumi:"clusterId"`
-	// Type-specific Configuration of cluster. String keys and values
+	// Type-specific Configuration of connector. String keys and values
 	Config map[string]interface{} `pulumi:"config"`
+	// Sensitive part of connector configuration. String keys and values
+	ConfigSensitive map[string]interface{} `pulumi:"configSensitive"`
 	// ID of containing environment, e.g. env-abc123
 	EnvironmentId string `pulumi:"environmentId"`
 	// The name of the connector
@@ -102,8 +110,10 @@ type connectorArgs struct {
 type ConnectorArgs struct {
 	// ID of containing cluster, e.g. lkc-abc123
 	ClusterId pulumi.StringInput
-	// Type-specific Configuration of cluster. String keys and values
+	// Type-specific Configuration of connector. String keys and values
 	Config pulumi.MapInput
+	// Sensitive part of connector configuration. String keys and values
+	ConfigSensitive pulumi.MapInput
 	// ID of containing environment, e.g. env-abc123
 	EnvironmentId pulumi.StringInput
 	// The name of the connector

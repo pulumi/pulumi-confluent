@@ -52,6 +52,14 @@ func makeResource(mod string, res string) tokens.Type {
 	return makeType(mod+"/"+fn, res)
 }
 
+// makeDataSource manufactures a standard resource token given a module and resource name.  It
+// automatically uses the main package and names the file by simply lower casing the data source's
+// first character.
+func makeDataSource(mod string, res string) tokens.ModuleMember {
+	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
+	return makeMember(mod+"/"+fn, res)
+}
+
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	p := shimv2.NewProvider(ccloud.Provider())
@@ -69,14 +77,57 @@ func Provider() tfbridge.ProviderInfo {
 		Repository:     "https://github.com/pulumi/pulumi-confluent",
 		Config:         map[string]*tfbridge.SchemaInfo{},
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"confluentcloud_api_key":         {Tok: makeResource(mainMod, "ApiKey")},
-			"confluentcloud_environment":     {Tok: makeResource(mainMod, "ConfluentEnvironment")},
-			"confluentcloud_kafka_cluster":   {Tok: makeResource(mainMod, "KafkaCluster")},
-			"confluentcloud_schema_registry": {Tok: makeResource(mainMod, "SchemaRegistry")},
-			"confluentcloud_service_account": {Tok: makeResource(mainMod, "ServiceAccount")},
-			"confluentcloud_connector":       {Tok: makeResource(mainMod, "Connector")},
+			"confluentcloud_api_key": {
+				Tok: makeResource(mainMod, "ApiKey"),
+				Docs: &tfbridge.DocInfo{
+					Source: "api_key.md",
+				},
+			},
+			"confluentcloud_environment": {
+				Tok: makeResource(mainMod, "ConfluentEnvironment"),
+				Docs: &tfbridge.DocInfo{
+					Source: "environment.md",
+				},
+			},
+			"confluentcloud_kafka_cluster": {
+				Tok: makeResource(mainMod, "KafkaCluster"),
+				Docs: &tfbridge.DocInfo{
+					Source: "kafka_cluster.md",
+				},
+			},
+			"confluentcloud_schema_registry": {
+				Tok: makeResource(mainMod, "SchemaRegistry"),
+				Docs: &tfbridge.DocInfo{
+					Source: "schema_registry.md",
+				},
+			},
+			"confluentcloud_service_account": {
+				Tok: makeResource(mainMod, "ServiceAccount"),
+				Docs: &tfbridge.DocInfo{
+					Source: "service_account.md",
+				},
+			},
+			"confluentcloud_connector": {
+				Tok: makeResource(mainMod, "Connector"),
+				Docs: &tfbridge.DocInfo{
+					Source: "connector.md",
+				},
+			},
 		},
-		DataSources: map[string]*tfbridge.DataSourceInfo{},
+		DataSources: map[string]*tfbridge.DataSourceInfo{
+			"confluentcloud_environment": {
+				Tok: makeDataSource(mainMod, "getEnvironment"),
+				Docs: &tfbridge.DocInfo{
+					Source: "environment.md",
+				},
+			},
+			"confluentcloud_service_account": {
+				Tok: makeDataSource(mainMod, "getServiceAccount"),
+				Docs: &tfbridge.DocInfo{
+					Source: "service_account.md",
+				},
+			},
+		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
 			Dependencies: map[string]string{

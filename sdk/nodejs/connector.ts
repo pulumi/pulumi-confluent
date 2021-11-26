@@ -37,9 +37,13 @@ export class Connector extends pulumi.CustomResource {
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
-     * Type-specific Configuration of cluster. String keys and values
+     * Type-specific Configuration of connector. String keys and values
      */
     public readonly config!: pulumi.Output<{[key: string]: any}>;
+    /**
+     * Sensitive part of connector configuration. String keys and values
+     */
+    public readonly configSensitive!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * ID of containing environment, e.g. env-abc123
      */
@@ -64,6 +68,7 @@ export class Connector extends pulumi.CustomResource {
             const state = argsOrState as ConnectorState | undefined;
             inputs["clusterId"] = state ? state.clusterId : undefined;
             inputs["config"] = state ? state.config : undefined;
+            inputs["configSensitive"] = state ? state.configSensitive : undefined;
             inputs["environmentId"] = state ? state.environmentId : undefined;
             inputs["name"] = state ? state.name : undefined;
         } else {
@@ -79,6 +84,7 @@ export class Connector extends pulumi.CustomResource {
             }
             inputs["clusterId"] = args ? args.clusterId : undefined;
             inputs["config"] = args ? args.config : undefined;
+            inputs["configSensitive"] = args ? args.configSensitive : undefined;
             inputs["environmentId"] = args ? args.environmentId : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
@@ -98,9 +104,13 @@ export interface ConnectorState {
      */
     clusterId?: pulumi.Input<string>;
     /**
-     * Type-specific Configuration of cluster. String keys and values
+     * Type-specific Configuration of connector. String keys and values
      */
     config?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Sensitive part of connector configuration. String keys and values
+     */
+    configSensitive?: pulumi.Input<{[key: string]: any}>;
     /**
      * ID of containing environment, e.g. env-abc123
      */
@@ -120,9 +130,13 @@ export interface ConnectorArgs {
      */
     clusterId: pulumi.Input<string>;
     /**
-     * Type-specific Configuration of cluster. String keys and values
+     * Type-specific Configuration of connector. String keys and values
      */
     config: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Sensitive part of connector configuration. String keys and values
+     */
+    configSensitive?: pulumi.Input<{[key: string]: any}>;
     /**
      * ID of containing environment, e.g. env-abc123
      */
