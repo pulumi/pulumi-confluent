@@ -178,7 +178,14 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Type-specific Configuration of cluster. String keys and values\n"
+                    "description": "Type-specific Configuration of connector. String keys and values\n"
+                },
+                "configSensitive": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Sensitive part of connector configuration. String keys and values\n"
                 },
                 "environmentId": {
                     "type": "string",
@@ -205,7 +212,14 @@
                     "additionalProperties": {
                         "$ref": "pulumi.json#/Any"
                     },
-                    "description": "Type-specific Configuration of cluster. String keys and values\n"
+                    "description": "Type-specific Configuration of connector. String keys and values\n"
+                },
+                "configSensitive": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    },
+                    "description": "Sensitive part of connector configuration. String keys and values\n"
                 },
                 "environmentId": {
                     "type": "string",
@@ -233,7 +247,14 @@
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
                         },
-                        "description": "Type-specific Configuration of cluster. String keys and values\n"
+                        "description": "Type-specific Configuration of connector. String keys and values\n"
+                    },
+                    "configSensitive": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "Sensitive part of connector configuration. String keys and values\n"
                     },
                     "environmentId": {
                         "type": "string",
@@ -514,6 +535,70 @@
                     }
                 },
                 "type": "object"
+            }
+        }
+    },
+    "functions": {
+        "confluent:index/getEnvironment:getEnvironment": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getEnvironment.\n",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getEnvironment.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "id"
+                ]
+            }
+        },
+        "confluent:index/getServiceAccount:getServiceAccount": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getServiceAccount.\n",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getServiceAccount.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "id"
+                ]
             }
         }
     },

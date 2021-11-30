@@ -8,6 +8,8 @@ import * as utilities from "./utilities";
 export * from "./apiKey";
 export * from "./confluentEnvironment";
 export * from "./connector";
+export * from "./getEnvironment";
+export * from "./getServiceAccount";
 export * from "./kafkaCluster";
 export * from "./provider";
 export * from "./schemaRegistry";

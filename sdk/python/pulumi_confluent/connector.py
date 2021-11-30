@@ -16,17 +16,21 @@ class ConnectorArgs:
                  cluster_id: pulumi.Input[str],
                  config: pulumi.Input[Mapping[str, Any]],
                  environment_id: pulumi.Input[str],
+                 config_sensitive: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Connector resource.
         :param pulumi.Input[str] cluster_id: ID of containing cluster, e.g. lkc-abc123
-        :param pulumi.Input[Mapping[str, Any]] config: Type-specific Configuration of cluster. String keys and values
+        :param pulumi.Input[Mapping[str, Any]] config: Type-specific Configuration of connector. String keys and values
         :param pulumi.Input[str] environment_id: ID of containing environment, e.g. env-abc123
+        :param pulumi.Input[Mapping[str, Any]] config_sensitive: Sensitive part of connector configuration. String keys and values
         :param pulumi.Input[str] name: The name of the connector
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "config", config)
         pulumi.set(__self__, "environment_id", environment_id)
+        if config_sensitive is not None:
+            pulumi.set(__self__, "config_sensitive", config_sensitive)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -46,7 +50,7 @@ class ConnectorArgs:
     @pulumi.getter
     def config(self) -> pulumi.Input[Mapping[str, Any]]:
         """
-        Type-specific Configuration of cluster. String keys and values
+        Type-specific Configuration of connector. String keys and values
         """
         return pulumi.get(self, "config")
 
@@ -67,6 +71,18 @@ class ConnectorArgs:
         pulumi.set(self, "environment_id", value)
 
     @property
+    @pulumi.getter(name="configSensitive")
+    def config_sensitive(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Sensitive part of connector configuration. String keys and values
+        """
+        return pulumi.get(self, "config_sensitive")
+
+    @config_sensitive.setter
+    def config_sensitive(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "config_sensitive", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -84,12 +100,14 @@ class _ConnectorState:
     def __init__(__self__, *,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 config_sensitive: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Connector resources.
         :param pulumi.Input[str] cluster_id: ID of containing cluster, e.g. lkc-abc123
-        :param pulumi.Input[Mapping[str, Any]] config: Type-specific Configuration of cluster. String keys and values
+        :param pulumi.Input[Mapping[str, Any]] config: Type-specific Configuration of connector. String keys and values
+        :param pulumi.Input[Mapping[str, Any]] config_sensitive: Sensitive part of connector configuration. String keys and values
         :param pulumi.Input[str] environment_id: ID of containing environment, e.g. env-abc123
         :param pulumi.Input[str] name: The name of the connector
         """
@@ -97,6 +115,8 @@ class _ConnectorState:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if config is not None:
             pulumi.set(__self__, "config", config)
+        if config_sensitive is not None:
+            pulumi.set(__self__, "config_sensitive", config_sensitive)
         if environment_id is not None:
             pulumi.set(__self__, "environment_id", environment_id)
         if name is not None:
@@ -118,13 +138,25 @@ class _ConnectorState:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        Type-specific Configuration of cluster. String keys and values
+        Type-specific Configuration of connector. String keys and values
         """
         return pulumi.get(self, "config")
 
     @config.setter
     def config(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter(name="configSensitive")
+    def config_sensitive(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Sensitive part of connector configuration. String keys and values
+        """
+        return pulumi.get(self, "config_sensitive")
+
+    @config_sensitive.setter
+    def config_sensitive(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "config_sensitive", value)
 
     @property
     @pulumi.getter(name="environmentId")
@@ -158,6 +190,7 @@ class Connector(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 config_sensitive: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -166,7 +199,8 @@ class Connector(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: ID of containing cluster, e.g. lkc-abc123
-        :param pulumi.Input[Mapping[str, Any]] config: Type-specific Configuration of cluster. String keys and values
+        :param pulumi.Input[Mapping[str, Any]] config: Type-specific Configuration of connector. String keys and values
+        :param pulumi.Input[Mapping[str, Any]] config_sensitive: Sensitive part of connector configuration. String keys and values
         :param pulumi.Input[str] environment_id: ID of containing environment, e.g. env-abc123
         :param pulumi.Input[str] name: The name of the connector
         """
@@ -195,6 +229,7 @@ class Connector(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 config_sensitive: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -215,6 +250,7 @@ class Connector(pulumi.CustomResource):
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
+            __props__.__dict__["config_sensitive"] = config_sensitive
             if environment_id is None and not opts.urn:
                 raise TypeError("Missing required property 'environment_id'")
             __props__.__dict__["environment_id"] = environment_id
@@ -231,6 +267,7 @@ class Connector(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
             config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            config_sensitive: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             environment_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None) -> 'Connector':
         """
@@ -241,7 +278,8 @@ class Connector(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: ID of containing cluster, e.g. lkc-abc123
-        :param pulumi.Input[Mapping[str, Any]] config: Type-specific Configuration of cluster. String keys and values
+        :param pulumi.Input[Mapping[str, Any]] config: Type-specific Configuration of connector. String keys and values
+        :param pulumi.Input[Mapping[str, Any]] config_sensitive: Sensitive part of connector configuration. String keys and values
         :param pulumi.Input[str] environment_id: ID of containing environment, e.g. env-abc123
         :param pulumi.Input[str] name: The name of the connector
         """
@@ -251,6 +289,7 @@ class Connector(pulumi.CustomResource):
 
         __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["config"] = config
+        __props__.__dict__["config_sensitive"] = config_sensitive
         __props__.__dict__["environment_id"] = environment_id
         __props__.__dict__["name"] = name
         return Connector(resource_name, opts=opts, __props__=__props__)
@@ -267,9 +306,17 @@ class Connector(pulumi.CustomResource):
     @pulumi.getter
     def config(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        Type-specific Configuration of cluster. String keys and values
+        Type-specific Configuration of connector. String keys and values
         """
         return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter(name="configSensitive")
+    def config_sensitive(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        Sensitive part of connector configuration. String keys and values
+        """
+        return pulumi.get(self, "config_sensitive")
 
     @property
     @pulumi.getter(name="environmentId")

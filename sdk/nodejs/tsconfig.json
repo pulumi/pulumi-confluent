@@ -18,6 +18,8 @@
         "config/vars.ts",
         "confluentEnvironment.ts",
         "connector.ts",
+        "getEnvironment.ts",
+        "getServiceAccount.ts",
         "index.ts",
         "kafkaCluster.ts",
         "provider.ts",
