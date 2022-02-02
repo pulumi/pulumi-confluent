@@ -62,15 +62,15 @@ export class Connector extends pulumi.CustomResource {
      */
     constructor(name: string, args: ConnectorArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConnectorArgs | ConnectorState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectorState | undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["config"] = state ? state.config : undefined;
-            inputs["configSensitive"] = state ? state.configSensitive : undefined;
-            inputs["environmentId"] = state ? state.environmentId : undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["config"] = state ? state.config : undefined;
+            resourceInputs["configSensitive"] = state ? state.configSensitive : undefined;
+            resourceInputs["environmentId"] = state ? state.environmentId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as ConnectorArgs | undefined;
             if ((!args || args.clusterId === undefined) && !opts.urn) {
@@ -82,16 +82,14 @@ export class Connector extends pulumi.CustomResource {
             if ((!args || args.environmentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'environmentId'");
             }
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["config"] = args ? args.config : undefined;
-            inputs["configSensitive"] = args ? args.configSensitive : undefined;
-            inputs["environmentId"] = args ? args.environmentId : undefined;
-            inputs["name"] = args ? args.name : undefined;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["configSensitive"] = args ? args.configSensitive : undefined;
+            resourceInputs["environmentId"] = args ? args.environmentId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Connector.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Connector.__pulumiType, name, resourceInputs, opts);
     }
 }
 

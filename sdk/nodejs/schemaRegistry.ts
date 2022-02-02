@@ -55,14 +55,14 @@ export class SchemaRegistry extends pulumi.CustomResource {
      */
     constructor(name: string, args: SchemaRegistryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SchemaRegistryArgs | SchemaRegistryState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SchemaRegistryState | undefined;
-            inputs["endpoint"] = state ? state.endpoint : undefined;
-            inputs["environmentId"] = state ? state.environmentId : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["serviceProvider"] = state ? state.serviceProvider : undefined;
+            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
+            resourceInputs["environmentId"] = state ? state.environmentId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["serviceProvider"] = state ? state.serviceProvider : undefined;
         } else {
             const args = argsOrState as SchemaRegistryArgs | undefined;
             if ((!args || args.environmentId === undefined) && !opts.urn) {
@@ -74,15 +74,13 @@ export class SchemaRegistry extends pulumi.CustomResource {
             if ((!args || args.serviceProvider === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceProvider'");
             }
-            inputs["environmentId"] = args ? args.environmentId : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["serviceProvider"] = args ? args.serviceProvider : undefined;
-            inputs["endpoint"] = undefined /*out*/;
+            resourceInputs["environmentId"] = args ? args.environmentId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["serviceProvider"] = args ? args.serviceProvider : undefined;
+            resourceInputs["endpoint"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SchemaRegistry.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SchemaRegistry.__pulumiType, name, resourceInputs, opts);
     }
 }
 

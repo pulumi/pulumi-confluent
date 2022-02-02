@@ -82,7 +82,7 @@ type ConfluentEnvironmentInput interface {
 }
 
 func (*ConfluentEnvironment) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConfluentEnvironment)(nil))
+	return reflect.TypeOf((**ConfluentEnvironment)(nil)).Elem()
 }
 
 func (i *ConfluentEnvironment) ToConfluentEnvironmentOutput() ConfluentEnvironmentOutput {
@@ -91,35 +91,6 @@ func (i *ConfluentEnvironment) ToConfluentEnvironmentOutput() ConfluentEnvironme
 
 func (i *ConfluentEnvironment) ToConfluentEnvironmentOutputWithContext(ctx context.Context) ConfluentEnvironmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConfluentEnvironmentOutput)
-}
-
-func (i *ConfluentEnvironment) ToConfluentEnvironmentPtrOutput() ConfluentEnvironmentPtrOutput {
-	return i.ToConfluentEnvironmentPtrOutputWithContext(context.Background())
-}
-
-func (i *ConfluentEnvironment) ToConfluentEnvironmentPtrOutputWithContext(ctx context.Context) ConfluentEnvironmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConfluentEnvironmentPtrOutput)
-}
-
-type ConfluentEnvironmentPtrInput interface {
-	pulumi.Input
-
-	ToConfluentEnvironmentPtrOutput() ConfluentEnvironmentPtrOutput
-	ToConfluentEnvironmentPtrOutputWithContext(ctx context.Context) ConfluentEnvironmentPtrOutput
-}
-
-type confluentEnvironmentPtrType ConfluentEnvironmentArgs
-
-func (*confluentEnvironmentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConfluentEnvironment)(nil))
-}
-
-func (i *confluentEnvironmentPtrType) ToConfluentEnvironmentPtrOutput() ConfluentEnvironmentPtrOutput {
-	return i.ToConfluentEnvironmentPtrOutputWithContext(context.Background())
-}
-
-func (i *confluentEnvironmentPtrType) ToConfluentEnvironmentPtrOutputWithContext(ctx context.Context) ConfluentEnvironmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConfluentEnvironmentPtrOutput)
 }
 
 // ConfluentEnvironmentArrayInput is an input type that accepts ConfluentEnvironmentArray and ConfluentEnvironmentArrayOutput values.
@@ -175,7 +146,7 @@ func (i ConfluentEnvironmentMap) ToConfluentEnvironmentMapOutputWithContext(ctx 
 type ConfluentEnvironmentOutput struct{ *pulumi.OutputState }
 
 func (ConfluentEnvironmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConfluentEnvironment)(nil))
+	return reflect.TypeOf((**ConfluentEnvironment)(nil)).Elem()
 }
 
 func (o ConfluentEnvironmentOutput) ToConfluentEnvironmentOutput() ConfluentEnvironmentOutput {
@@ -186,44 +157,10 @@ func (o ConfluentEnvironmentOutput) ToConfluentEnvironmentOutputWithContext(ctx 
 	return o
 }
 
-func (o ConfluentEnvironmentOutput) ToConfluentEnvironmentPtrOutput() ConfluentEnvironmentPtrOutput {
-	return o.ToConfluentEnvironmentPtrOutputWithContext(context.Background())
-}
-
-func (o ConfluentEnvironmentOutput) ToConfluentEnvironmentPtrOutputWithContext(ctx context.Context) ConfluentEnvironmentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfluentEnvironment) *ConfluentEnvironment {
-		return &v
-	}).(ConfluentEnvironmentPtrOutput)
-}
-
-type ConfluentEnvironmentPtrOutput struct{ *pulumi.OutputState }
-
-func (ConfluentEnvironmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConfluentEnvironment)(nil))
-}
-
-func (o ConfluentEnvironmentPtrOutput) ToConfluentEnvironmentPtrOutput() ConfluentEnvironmentPtrOutput {
-	return o
-}
-
-func (o ConfluentEnvironmentPtrOutput) ToConfluentEnvironmentPtrOutputWithContext(ctx context.Context) ConfluentEnvironmentPtrOutput {
-	return o
-}
-
-func (o ConfluentEnvironmentPtrOutput) Elem() ConfluentEnvironmentOutput {
-	return o.ApplyT(func(v *ConfluentEnvironment) ConfluentEnvironment {
-		if v != nil {
-			return *v
-		}
-		var ret ConfluentEnvironment
-		return ret
-	}).(ConfluentEnvironmentOutput)
-}
-
 type ConfluentEnvironmentArrayOutput struct{ *pulumi.OutputState }
 
 func (ConfluentEnvironmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConfluentEnvironment)(nil))
+	return reflect.TypeOf((*[]*ConfluentEnvironment)(nil)).Elem()
 }
 
 func (o ConfluentEnvironmentArrayOutput) ToConfluentEnvironmentArrayOutput() ConfluentEnvironmentArrayOutput {
@@ -235,15 +172,15 @@ func (o ConfluentEnvironmentArrayOutput) ToConfluentEnvironmentArrayOutputWithCo
 }
 
 func (o ConfluentEnvironmentArrayOutput) Index(i pulumi.IntInput) ConfluentEnvironmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfluentEnvironment {
-		return vs[0].([]ConfluentEnvironment)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConfluentEnvironment {
+		return vs[0].([]*ConfluentEnvironment)[vs[1].(int)]
 	}).(ConfluentEnvironmentOutput)
 }
 
 type ConfluentEnvironmentMapOutput struct{ *pulumi.OutputState }
 
 func (ConfluentEnvironmentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ConfluentEnvironment)(nil))
+	return reflect.TypeOf((*map[string]*ConfluentEnvironment)(nil)).Elem()
 }
 
 func (o ConfluentEnvironmentMapOutput) ToConfluentEnvironmentMapOutput() ConfluentEnvironmentMapOutput {
@@ -255,18 +192,16 @@ func (o ConfluentEnvironmentMapOutput) ToConfluentEnvironmentMapOutputWithContex
 }
 
 func (o ConfluentEnvironmentMapOutput) MapIndex(k pulumi.StringInput) ConfluentEnvironmentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ConfluentEnvironment {
-		return vs[0].(map[string]ConfluentEnvironment)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ConfluentEnvironment {
+		return vs[0].(map[string]*ConfluentEnvironment)[vs[1].(string)]
 	}).(ConfluentEnvironmentOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfluentEnvironmentInput)(nil)).Elem(), &ConfluentEnvironment{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConfluentEnvironmentPtrInput)(nil)).Elem(), &ConfluentEnvironment{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfluentEnvironmentArrayInput)(nil)).Elem(), ConfluentEnvironmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfluentEnvironmentMapInput)(nil)).Elem(), ConfluentEnvironmentMap{})
 	pulumi.RegisterOutputType(ConfluentEnvironmentOutput{})
-	pulumi.RegisterOutputType(ConfluentEnvironmentPtrOutput{})
 	pulumi.RegisterOutputType(ConfluentEnvironmentArrayOutput{})
 	pulumi.RegisterOutputType(ConfluentEnvironmentMapOutput{})
 }
