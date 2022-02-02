@@ -61,34 +61,32 @@ export class ApiKey extends pulumi.CustomResource {
      */
     constructor(name: string, args: ApiKeyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApiKeyArgs | ApiKeyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApiKeyState | undefined;
-            inputs["clusterId"] = state ? state.clusterId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["environmentId"] = state ? state.environmentId : undefined;
-            inputs["key"] = state ? state.key : undefined;
-            inputs["logicalClusters"] = state ? state.logicalClusters : undefined;
-            inputs["secret"] = state ? state.secret : undefined;
-            inputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["environmentId"] = state ? state.environmentId : undefined;
+            resourceInputs["key"] = state ? state.key : undefined;
+            resourceInputs["logicalClusters"] = state ? state.logicalClusters : undefined;
+            resourceInputs["secret"] = state ? state.secret : undefined;
+            resourceInputs["userId"] = state ? state.userId : undefined;
         } else {
             const args = argsOrState as ApiKeyArgs | undefined;
             if ((!args || args.environmentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'environmentId'");
             }
-            inputs["clusterId"] = args ? args.clusterId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["environmentId"] = args ? args.environmentId : undefined;
-            inputs["logicalClusters"] = args ? args.logicalClusters : undefined;
-            inputs["userId"] = args ? args.userId : undefined;
-            inputs["key"] = undefined /*out*/;
-            inputs["secret"] = undefined /*out*/;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["environmentId"] = args ? args.environmentId : undefined;
+            resourceInputs["logicalClusters"] = args ? args.logicalClusters : undefined;
+            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["key"] = undefined /*out*/;
+            resourceInputs["secret"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ApiKey.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ApiKey.__pulumiType, name, resourceInputs, opts);
     }
 }
 

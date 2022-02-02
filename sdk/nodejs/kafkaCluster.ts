@@ -83,21 +83,21 @@ export class KafkaCluster extends pulumi.CustomResource {
      */
     constructor(name: string, args: KafkaClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KafkaClusterArgs | KafkaClusterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KafkaClusterState | undefined;
-            inputs["availability"] = state ? state.availability : undefined;
-            inputs["bootstrapServers"] = state ? state.bootstrapServers : undefined;
-            inputs["cku"] = state ? state.cku : undefined;
-            inputs["deployment"] = state ? state.deployment : undefined;
-            inputs["environmentId"] = state ? state.environmentId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["networkEgress"] = state ? state.networkEgress : undefined;
-            inputs["networkIngress"] = state ? state.networkIngress : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["serviceProvider"] = state ? state.serviceProvider : undefined;
-            inputs["storage"] = state ? state.storage : undefined;
+            resourceInputs["availability"] = state ? state.availability : undefined;
+            resourceInputs["bootstrapServers"] = state ? state.bootstrapServers : undefined;
+            resourceInputs["cku"] = state ? state.cku : undefined;
+            resourceInputs["deployment"] = state ? state.deployment : undefined;
+            resourceInputs["environmentId"] = state ? state.environmentId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkEgress"] = state ? state.networkEgress : undefined;
+            resourceInputs["networkIngress"] = state ? state.networkIngress : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["serviceProvider"] = state ? state.serviceProvider : undefined;
+            resourceInputs["storage"] = state ? state.storage : undefined;
         } else {
             const args = argsOrState as KafkaClusterArgs | undefined;
             if ((!args || args.availability === undefined) && !opts.urn) {
@@ -112,22 +112,20 @@ export class KafkaCluster extends pulumi.CustomResource {
             if ((!args || args.serviceProvider === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceProvider'");
             }
-            inputs["availability"] = args ? args.availability : undefined;
-            inputs["cku"] = args ? args.cku : undefined;
-            inputs["deployment"] = args ? args.deployment : undefined;
-            inputs["environmentId"] = args ? args.environmentId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["networkEgress"] = args ? args.networkEgress : undefined;
-            inputs["networkIngress"] = args ? args.networkIngress : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["serviceProvider"] = args ? args.serviceProvider : undefined;
-            inputs["storage"] = args ? args.storage : undefined;
-            inputs["bootstrapServers"] = undefined /*out*/;
+            resourceInputs["availability"] = args ? args.availability : undefined;
+            resourceInputs["cku"] = args ? args.cku : undefined;
+            resourceInputs["deployment"] = args ? args.deployment : undefined;
+            resourceInputs["environmentId"] = args ? args.environmentId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkEgress"] = args ? args.networkEgress : undefined;
+            resourceInputs["networkIngress"] = args ? args.networkIngress : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["serviceProvider"] = args ? args.serviceProvider : undefined;
+            resourceInputs["storage"] = args ? args.storage : undefined;
+            resourceInputs["bootstrapServers"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(KafkaCluster.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(KafkaCluster.__pulumiType, name, resourceInputs, opts);
     }
 }
 

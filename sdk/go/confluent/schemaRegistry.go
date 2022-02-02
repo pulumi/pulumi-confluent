@@ -115,7 +115,7 @@ type SchemaRegistryInput interface {
 }
 
 func (*SchemaRegistry) ElementType() reflect.Type {
-	return reflect.TypeOf((*SchemaRegistry)(nil))
+	return reflect.TypeOf((**SchemaRegistry)(nil)).Elem()
 }
 
 func (i *SchemaRegistry) ToSchemaRegistryOutput() SchemaRegistryOutput {
@@ -124,35 +124,6 @@ func (i *SchemaRegistry) ToSchemaRegistryOutput() SchemaRegistryOutput {
 
 func (i *SchemaRegistry) ToSchemaRegistryOutputWithContext(ctx context.Context) SchemaRegistryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SchemaRegistryOutput)
-}
-
-func (i *SchemaRegistry) ToSchemaRegistryPtrOutput() SchemaRegistryPtrOutput {
-	return i.ToSchemaRegistryPtrOutputWithContext(context.Background())
-}
-
-func (i *SchemaRegistry) ToSchemaRegistryPtrOutputWithContext(ctx context.Context) SchemaRegistryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchemaRegistryPtrOutput)
-}
-
-type SchemaRegistryPtrInput interface {
-	pulumi.Input
-
-	ToSchemaRegistryPtrOutput() SchemaRegistryPtrOutput
-	ToSchemaRegistryPtrOutputWithContext(ctx context.Context) SchemaRegistryPtrOutput
-}
-
-type schemaRegistryPtrType SchemaRegistryArgs
-
-func (*schemaRegistryPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SchemaRegistry)(nil))
-}
-
-func (i *schemaRegistryPtrType) ToSchemaRegistryPtrOutput() SchemaRegistryPtrOutput {
-	return i.ToSchemaRegistryPtrOutputWithContext(context.Background())
-}
-
-func (i *schemaRegistryPtrType) ToSchemaRegistryPtrOutputWithContext(ctx context.Context) SchemaRegistryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchemaRegistryPtrOutput)
 }
 
 // SchemaRegistryArrayInput is an input type that accepts SchemaRegistryArray and SchemaRegistryArrayOutput values.
@@ -208,7 +179,7 @@ func (i SchemaRegistryMap) ToSchemaRegistryMapOutputWithContext(ctx context.Cont
 type SchemaRegistryOutput struct{ *pulumi.OutputState }
 
 func (SchemaRegistryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SchemaRegistry)(nil))
+	return reflect.TypeOf((**SchemaRegistry)(nil)).Elem()
 }
 
 func (o SchemaRegistryOutput) ToSchemaRegistryOutput() SchemaRegistryOutput {
@@ -219,44 +190,10 @@ func (o SchemaRegistryOutput) ToSchemaRegistryOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o SchemaRegistryOutput) ToSchemaRegistryPtrOutput() SchemaRegistryPtrOutput {
-	return o.ToSchemaRegistryPtrOutputWithContext(context.Background())
-}
-
-func (o SchemaRegistryOutput) ToSchemaRegistryPtrOutputWithContext(ctx context.Context) SchemaRegistryPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchemaRegistry) *SchemaRegistry {
-		return &v
-	}).(SchemaRegistryPtrOutput)
-}
-
-type SchemaRegistryPtrOutput struct{ *pulumi.OutputState }
-
-func (SchemaRegistryPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SchemaRegistry)(nil))
-}
-
-func (o SchemaRegistryPtrOutput) ToSchemaRegistryPtrOutput() SchemaRegistryPtrOutput {
-	return o
-}
-
-func (o SchemaRegistryPtrOutput) ToSchemaRegistryPtrOutputWithContext(ctx context.Context) SchemaRegistryPtrOutput {
-	return o
-}
-
-func (o SchemaRegistryPtrOutput) Elem() SchemaRegistryOutput {
-	return o.ApplyT(func(v *SchemaRegistry) SchemaRegistry {
-		if v != nil {
-			return *v
-		}
-		var ret SchemaRegistry
-		return ret
-	}).(SchemaRegistryOutput)
-}
-
 type SchemaRegistryArrayOutput struct{ *pulumi.OutputState }
 
 func (SchemaRegistryArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SchemaRegistry)(nil))
+	return reflect.TypeOf((*[]*SchemaRegistry)(nil)).Elem()
 }
 
 func (o SchemaRegistryArrayOutput) ToSchemaRegistryArrayOutput() SchemaRegistryArrayOutput {
@@ -268,15 +205,15 @@ func (o SchemaRegistryArrayOutput) ToSchemaRegistryArrayOutputWithContext(ctx co
 }
 
 func (o SchemaRegistryArrayOutput) Index(i pulumi.IntInput) SchemaRegistryOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SchemaRegistry {
-		return vs[0].([]SchemaRegistry)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SchemaRegistry {
+		return vs[0].([]*SchemaRegistry)[vs[1].(int)]
 	}).(SchemaRegistryOutput)
 }
 
 type SchemaRegistryMapOutput struct{ *pulumi.OutputState }
 
 func (SchemaRegistryMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SchemaRegistry)(nil))
+	return reflect.TypeOf((*map[string]*SchemaRegistry)(nil)).Elem()
 }
 
 func (o SchemaRegistryMapOutput) ToSchemaRegistryMapOutput() SchemaRegistryMapOutput {
@@ -288,18 +225,16 @@ func (o SchemaRegistryMapOutput) ToSchemaRegistryMapOutputWithContext(ctx contex
 }
 
 func (o SchemaRegistryMapOutput) MapIndex(k pulumi.StringInput) SchemaRegistryOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SchemaRegistry {
-		return vs[0].(map[string]SchemaRegistry)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SchemaRegistry {
+		return vs[0].(map[string]*SchemaRegistry)[vs[1].(string)]
 	}).(SchemaRegistryOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaRegistryInput)(nil)).Elem(), &SchemaRegistry{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SchemaRegistryPtrInput)(nil)).Elem(), &SchemaRegistry{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaRegistryArrayInput)(nil)).Elem(), SchemaRegistryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaRegistryMapInput)(nil)).Elem(), SchemaRegistryMap{})
 	pulumi.RegisterOutputType(SchemaRegistryOutput{})
-	pulumi.RegisterOutputType(SchemaRegistryPtrOutput{})
 	pulumi.RegisterOutputType(SchemaRegistryArrayOutput{})
 	pulumi.RegisterOutputType(SchemaRegistryMapOutput{})
 }

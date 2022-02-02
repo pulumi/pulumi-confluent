@@ -9,9 +9,7 @@ export function getServiceAccount(args: GetServiceAccountArgs, opts?: pulumi.Inv
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("confluent:index/getServiceAccount:getServiceAccount", {
         "name": args.name,
     }, opts);

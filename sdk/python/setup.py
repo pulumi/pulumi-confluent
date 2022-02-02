@@ -55,6 +55,7 @@ setup(name='pulumi_confluent',
       package_data={
           'pulumi_confluent': [
               'py.typed',
+              'pulumi-plugin.json',
           ]
       },
       install_requires=[
