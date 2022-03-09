@@ -19,6 +19,9 @@ export function getServiceAccount(args: GetServiceAccountArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getServiceAccount.
  */
 export interface GetServiceAccountArgs {
+    /**
+     * The name of the service account
+     */
     name: string;
 }
 
@@ -30,6 +33,9 @@ export interface GetServiceAccountResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The name of the service account
+     */
     readonly name: string;
 }
 
@@ -41,5 +47,8 @@ export function getServiceAccountOutput(args: GetServiceAccountOutputArgs, opts?
  * A collection of arguments for invoking getServiceAccount.
  */
 export interface GetServiceAccountOutputArgs {
+    /**
+     * The name of the service account
+     */
     name: pulumi.Input<string>;
 }

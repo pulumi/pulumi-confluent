@@ -21,13 +21,15 @@ func LookupServiceAccount(ctx *pulumi.Context, args *LookupServiceAccountArgs, o
 
 // A collection of arguments for invoking getServiceAccount.
 type LookupServiceAccountArgs struct {
+	// The name of the service account
 	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getServiceAccount.
 type LookupServiceAccountResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id   string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The name of the service account
 	Name string `pulumi:"name"`
 }
 
@@ -42,6 +44,7 @@ func LookupServiceAccountOutput(ctx *pulumi.Context, args LookupServiceAccountOu
 
 // A collection of arguments for invoking getServiceAccount.
 type LookupServiceAccountOutputArgs struct {
+	// The name of the service account
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -69,6 +72,7 @@ func (o LookupServiceAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceAccountResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the service account
 func (o LookupServiceAccountResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceAccountResult) string { return v.Name }).(pulumi.StringOutput)
 }

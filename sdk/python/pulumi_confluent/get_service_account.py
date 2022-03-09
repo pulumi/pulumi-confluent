@@ -39,6 +39,9 @@ class GetServiceAccountResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the service account
+        """
         return pulumi.get(self, "name")
 
 
@@ -56,6 +59,8 @@ def get_service_account(name: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceAccountResult:
     """
     Use this data source to access information about an existing resource.
+
+    :param str name: The name of the service account
     """
     __args__ = dict()
     __args__['name'] = name
@@ -75,5 +80,7 @@ def get_service_account_output(name: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceAccountResult]:
     """
     Use this data source to access information about an existing resource.
+
+    :param str name: The name of the service account
     """
     ...

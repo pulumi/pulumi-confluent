@@ -7,7 +7,7 @@
     ],
     "homepage": "https://pulumi.io",
     "license": "Apache-2.0",
-    "attribution": "This Pulumi package is based on the [`confluent` Terraform Provider](https://github.com/Mongey/terraform-provider-confluent).",
+    "attribution": "This Pulumi package is based on the [`confluentcloud` Terraform Provider](https://github.com/Mongey/terraform-provider-confluentcloud).",
     "repository": "https://github.com/pulumi/pulumi-confluent",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
@@ -23,7 +23,7 @@
         }
     },
     "provider": {
-        "description": "The provider type for the confluent package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
+        "description": "The provider type for the confluentcloud package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
         "properties": {
             "password": {
                 "type": "string"
@@ -544,7 +544,8 @@
                 "description": "A collection of arguments for invoking getEnvironment.\n",
                 "properties": {
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The name of the environment\n"
                     }
                 },
                 "type": "object",
@@ -560,7 +561,8 @@
                         "description": "The provider-assigned unique ID for this managed resource.\n"
                     },
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The name of the environment\n"
                     }
                 },
                 "type": "object",
@@ -575,7 +577,8 @@
                 "description": "A collection of arguments for invoking getServiceAccount.\n",
                 "properties": {
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The name of the service account\n"
                     }
                 },
                 "type": "object",
@@ -591,7 +594,8 @@
                         "description": "The provider-assigned unique ID for this managed resource.\n"
                     },
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The name of the service account\n"
                     }
                 },
                 "type": "object",
@@ -627,12 +631,12 @@
             "disableUnionOutputTypes": true,
             "packageDescription": "A Pulumi package for creating and managing confluent cloud resources.",
             "packageName": "",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/Mongey/terraform-provider-confluent)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-confluent` repo](https://github.com/pulumi/pulumi-confluent/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`Mongey/terraform-provider-confluent` repo](https://github.com/Mongey/terraform-provider-confluent/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/Mongey/terraform-provider-confluentcloud)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-confluent` repo](https://github.com/pulumi/pulumi-confluent/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`Mongey/terraform-provider-confluentcloud` repo](https://github.com/Mongey/terraform-provider-confluentcloud/issues).",
             "typescriptVersion": ""
         },
         "python": {
             "compatibility": "tfbridge20",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/Mongey/terraform-provider-confluent)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-confluent` repo](https://github.com/pulumi/pulumi-confluent/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`Mongey/terraform-provider-confluent` repo](https://github.com/Mongey/terraform-provider-confluent/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/Mongey/terraform-provider-confluentcloud)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-confluent` repo](https://github.com/pulumi/pulumi-confluent/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`Mongey/terraform-provider-confluentcloud` repo](https://github.com/Mongey/terraform-provider-confluentcloud/issues).",
             "requires": {
                 "pulumi": "\u003e=3.0.0,\u003c4.0.0"
             }
