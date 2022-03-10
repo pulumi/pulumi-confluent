@@ -21,13 +21,15 @@ func GetEnvironment(ctx *pulumi.Context, args *GetEnvironmentArgs, opts ...pulum
 
 // A collection of arguments for invoking getEnvironment.
 type GetEnvironmentArgs struct {
+	// The name of the environment
 	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getEnvironment.
 type GetEnvironmentResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id   string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The name of the environment
 	Name string `pulumi:"name"`
 }
 
@@ -42,6 +44,7 @@ func GetEnvironmentOutput(ctx *pulumi.Context, args GetEnvironmentOutputArgs, op
 
 // A collection of arguments for invoking getEnvironment.
 type GetEnvironmentOutputArgs struct {
+	// The name of the environment
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -69,6 +72,7 @@ func (o GetEnvironmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the environment
 func (o GetEnvironmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentResult) string { return v.Name }).(pulumi.StringOutput)
 }

@@ -1,4 +1,4 @@
-> This provider is a derived work of the [Terraform Provider](https://github.com/Mongey/terraform-provider-confluent)
+> This provider is a derived work of the [Terraform Provider](https://github.com/Mongey/terraform-provider-confluentcloud)
 > distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,
 > first check the [`pulumi/pulumi-confluent` repo](https://github.com/pulumi/pulumi-confluent/issues); however, if that doesn't turn up anything,
-> please consult the source [`Mongey/terraform-provider-confluent` repo](https://github.com/Mongey/terraform-provider-confluent/issues).
+> please consult the source [`Mongey/terraform-provider-confluentcloud` repo](https://github.com/Mongey/terraform-provider-confluentcloud/issues).

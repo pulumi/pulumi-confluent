@@ -19,6 +19,9 @@ export function getEnvironment(args: GetEnvironmentArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getEnvironment.
  */
 export interface GetEnvironmentArgs {
+    /**
+     * The name of the environment
+     */
     name: string;
 }
 
@@ -30,6 +33,9 @@ export interface GetEnvironmentResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The name of the environment
+     */
     readonly name: string;
 }
 
@@ -41,5 +47,8 @@ export function getEnvironmentOutput(args: GetEnvironmentOutputArgs, opts?: pulu
  * A collection of arguments for invoking getEnvironment.
  */
 export interface GetEnvironmentOutputArgs {
+    /**
+     * The name of the environment
+     */
     name: pulumi.Input<string>;
 }

@@ -39,6 +39,9 @@ class GetEnvironmentResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the environment
+        """
         return pulumi.get(self, "name")
 
 
@@ -56,6 +59,8 @@ def get_environment(name: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEnvironmentResult:
     """
     Use this data source to access information about an existing resource.
+
+    :param str name: The name of the environment
     """
     __args__ = dict()
     __args__['name'] = name
@@ -75,5 +80,7 @@ def get_environment_output(name: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEnvironmentResult]:
     """
     Use this data source to access information about an existing resource.
+
+    :param str name: The name of the environment
     """
     ...

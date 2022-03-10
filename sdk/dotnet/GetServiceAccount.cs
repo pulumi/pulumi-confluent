@@ -21,6 +21,9 @@ namespace Pulumi.Confluent
 
     public sealed class GetServiceAccountArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the service account
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
@@ -31,6 +34,9 @@ namespace Pulumi.Confluent
 
     public sealed class GetServiceAccountInvokeArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the service account
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
@@ -47,6 +53,9 @@ namespace Pulumi.Confluent
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The name of the service account
+        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]
