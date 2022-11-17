@@ -146,7 +146,7 @@ func (i *Connector) ToConnectorOutputWithContext(ctx context.Context) ConnectorO
 // ConnectorArrayInput is an input type that accepts ConnectorArray and ConnectorArrayOutput values.
 // You can construct a concrete instance of `ConnectorArrayInput` via:
 //
-//          ConnectorArray{ ConnectorArgs{...} }
+//	ConnectorArray{ ConnectorArgs{...} }
 type ConnectorArrayInput interface {
 	pulumi.Input
 
@@ -171,7 +171,7 @@ func (i ConnectorArray) ToConnectorArrayOutputWithContext(ctx context.Context) C
 // ConnectorMapInput is an input type that accepts ConnectorMap and ConnectorMapOutput values.
 // You can construct a concrete instance of `ConnectorMapInput` via:
 //
-//          ConnectorMap{ "key": ConnectorArgs{...} }
+//	ConnectorMap{ "key": ConnectorArgs{...} }
 type ConnectorMapInput interface {
 	pulumi.Input
 

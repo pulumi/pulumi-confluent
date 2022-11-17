@@ -202,7 +202,7 @@ func (i *KafkaCluster) ToKafkaClusterOutputWithContext(ctx context.Context) Kafk
 // KafkaClusterArrayInput is an input type that accepts KafkaClusterArray and KafkaClusterArrayOutput values.
 // You can construct a concrete instance of `KafkaClusterArrayInput` via:
 //
-//          KafkaClusterArray{ KafkaClusterArgs{...} }
+//	KafkaClusterArray{ KafkaClusterArgs{...} }
 type KafkaClusterArrayInput interface {
 	pulumi.Input
 
@@ -227,7 +227,7 @@ func (i KafkaClusterArray) ToKafkaClusterArrayOutputWithContext(ctx context.Cont
 // KafkaClusterMapInput is an input type that accepts KafkaClusterMap and KafkaClusterMapOutput values.
 // You can construct a concrete instance of `KafkaClusterMapInput` via:
 //
-//          KafkaClusterMap{ "key": KafkaClusterArgs{...} }
+//	KafkaClusterMap{ "key": KafkaClusterArgs{...} }
 type KafkaClusterMapInput interface {
 	pulumi.Input
 

@@ -96,7 +96,7 @@ func (i *ConfluentEnvironment) ToConfluentEnvironmentOutputWithContext(ctx conte
 // ConfluentEnvironmentArrayInput is an input type that accepts ConfluentEnvironmentArray and ConfluentEnvironmentArrayOutput values.
 // You can construct a concrete instance of `ConfluentEnvironmentArrayInput` via:
 //
-//          ConfluentEnvironmentArray{ ConfluentEnvironmentArgs{...} }
+//	ConfluentEnvironmentArray{ ConfluentEnvironmentArgs{...} }
 type ConfluentEnvironmentArrayInput interface {
 	pulumi.Input
 
@@ -121,7 +121,7 @@ func (i ConfluentEnvironmentArray) ToConfluentEnvironmentArrayOutputWithContext(
 // ConfluentEnvironmentMapInput is an input type that accepts ConfluentEnvironmentMap and ConfluentEnvironmentMapOutput values.
 // You can construct a concrete instance of `ConfluentEnvironmentMapInput` via:
 //
-//          ConfluentEnvironmentMap{ "key": ConfluentEnvironmentArgs{...} }
+//	ConfluentEnvironmentMap{ "key": ConfluentEnvironmentArgs{...} }
 type ConfluentEnvironmentMapInput interface {
 	pulumi.Input
 

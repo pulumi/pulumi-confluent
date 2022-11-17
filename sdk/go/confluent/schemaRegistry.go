@@ -129,7 +129,7 @@ func (i *SchemaRegistry) ToSchemaRegistryOutputWithContext(ctx context.Context) 
 // SchemaRegistryArrayInput is an input type that accepts SchemaRegistryArray and SchemaRegistryArrayOutput values.
 // You can construct a concrete instance of `SchemaRegistryArrayInput` via:
 //
-//          SchemaRegistryArray{ SchemaRegistryArgs{...} }
+//	SchemaRegistryArray{ SchemaRegistryArgs{...} }
 type SchemaRegistryArrayInput interface {
 	pulumi.Input
 
@@ -154,7 +154,7 @@ func (i SchemaRegistryArray) ToSchemaRegistryArrayOutputWithContext(ctx context.
 // SchemaRegistryMapInput is an input type that accepts SchemaRegistryMap and SchemaRegistryMapOutput values.
 // You can construct a concrete instance of `SchemaRegistryMapInput` via:
 //
-//          SchemaRegistryMap{ "key": SchemaRegistryArgs{...} }
+//	SchemaRegistryMap{ "key": SchemaRegistryArgs{...} }
 type SchemaRegistryMapInput interface {
 	pulumi.Input
 
