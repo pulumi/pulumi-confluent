@@ -8,6 +8,8 @@
 
 # Confluent Cloud Resource Provider
 
+> **Note**: This provider has been deprecated. It is recommended to use the [Official Confluent Provider](https://www.pulumi.com/registry/packages/confluentcloud) as a replacement.
+
 The Confluent Cloud Resource Provider lets you manage Confluent Cloud resources.
 
 ## Installing
